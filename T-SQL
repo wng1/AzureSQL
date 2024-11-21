@@ -9,3 +9,28 @@ SELECT p.ProductID, m.Name AS Model, p.Name AS Product
 FROM SalesLT.Product AS p
 JOIN SalesLT.ProductModel AS m
     ON p.ProductModelID = m.ProductModelID;
+
+SELECT emp.FirstName, ord.Amount
+FROM HR.Employee AS emp 
+JOIN Sales.SalesOrder AS ord
+    ON emp.EmployeeID = ord.EmployeeID;
+
+SELECT emp.FirstName, ord.Amount
+FROM HR.Employee AS emp 
+INNER JOIN Sales.SalesOrder AS ord
+    ON emp.EmployeeID = ord.EmployeeID;
+
+SELECT p.ProductID, m.Name AS Model, p.Name AS Product
+FROM Production.Product AS p
+INNER JOIN Production.ProductModel AS m
+    ON p.ProductModelID = m.ProductModelID
+ORDER BY p.ProductID;
+
+SELECT od.SalesOrderID, m.Name AS Model, p.Name AS ProductName, od.OrderQty
+FROM Production.Product AS p
+INNER JOIN Production.ProductModel AS m
+    ON p.ProductModelID = m.ProductModelID
+INNER JOIN Sales.SalesOrderDetail AS od
+    ON p.ProductID = od.ProductID
+ORDER BY od.SalesOrderID;
+
