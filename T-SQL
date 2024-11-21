@@ -1,0 +1,11 @@
+https://learn.microsoft.com/en-us/training/modules/query-multiple-tables-with-joins/1-introduction
+
+
+SELECT p.ProductID, m.Name AS Model, p.Name AS Product
+FROM SalesLT.Product AS p, SalesLT.ProductModel AS m
+WHERE p.ProductModelID = m.ProductModelID;
+
+SELECT p.ProductID, m.Name AS Model, p.Name AS Product
+FROM SalesLT.Product AS p
+JOIN SalesLT.ProductModel AS m
+    ON p.ProductModelID = m.ProductModelID;
