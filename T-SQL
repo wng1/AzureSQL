@@ -46,3 +46,20 @@ WHERE SalesOrderID =
    (SELECT MAX(SalesOrderID)
     FROM Sales.SalesOrderHeader);
 
+### Returns the CustomerID, SalesOrderID values for all orders placed by customers in Canada.
+
+SELECT c.CustomerID, o.SalesOrderID
+FROM Sales.Customer AS c
+JOIN Sales.SalesOrderHeader AS o
+    ON c.CustomerID = o.CustomerID
+WHERE c.CountryRegion = 'Canada';
+
+### Multi-valued subqueries can easily be written using joins. 
+### For example, here's a query that uses a join to return the same results as the previous example:
+
+SELECT c.CustomerID, o.SalesOrderID
+FROM Sales.Customer AS c
+JOIN Sales.SalesOrderHeader AS o
+    ON c.CustomerID = o.CustomerID
+WHERE c.CountryRegion = 'Canada';
+
