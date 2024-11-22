@@ -63,3 +63,13 @@ JOIN Sales.SalesOrderHeader AS o
     ON c.CustomerID = o.CustomerID
 WHERE c.CountryRegion = 'Canada';
 
+##Displays the maximum SalesOrderID for each customer, ensuring only the latest sales order for each customer is shown.
+
+SELECT SalesOrderID, CustomerID, OrderDate
+FROM SalesLT.SalesOrderHeader AS o1
+WHERE SalesOrderID =
+    (SELECT MAX(SalesOrderID)
+     FROM SalesLT.SalesOrderHeader AS o2
+     WHERE o2.CustomerID = o1.CustomerID)
+ORDER BY CustomerID, OrderDate;
+
