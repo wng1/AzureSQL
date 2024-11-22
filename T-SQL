@@ -38,3 +38,11 @@ ORDER BY od.SalesOrderID;
 
 SELECT MAX(SalesOrderID)
 FROM Sales.SalesOrderHeader
+
+##Details of Last Order
+SELECT SalesOrderID, ProductID, OrderQty
+FROM Sales.SalesOrderDetail
+WHERE SalesOrderID = 
+   (SELECT MAX(SalesOrderID)
+    FROM Sales.SalesOrderHeader);
+
