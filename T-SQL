@@ -34,3 +34,7 @@ INNER JOIN Sales.SalesOrderDetail AS od
     ON p.ProductID = od.ProductID
 ORDER BY od.SalesOrderID;
 
+##Last Order
+
+SELECT MAX(SalesOrderID)
+FROM Sales.SalesOrderHeader
