@@ -73,3 +73,20 @@ WHERE SalesOrderID =
      WHERE o2.CustomerID = o1.CustomerID)
 ORDER BY CustomerID, OrderDate;
 
+
+#### Last Order 
+ SELECT MAX(UnitPrice)
+ FROM SalesLT.SalesOrderDetail;
+
+## Retrieve List price higher than the maximum selling price
+ SELECT Name, ListPrice
+ FROM SalesLT.Product
+ WHERE ListPrice >
+     (SELECT MAX(UnitPrice)
+      FROM SalesLT.SalesOrderDetail);
+
+### Products with 20 or more orders
+ SELECT DISTINCT ProductID
+ FROM SalesLT.SalesOrderDetail
+ WHERE OrderQty >= 20;
+
