@@ -90,3 +90,18 @@ ORDER BY CustomerID, OrderDate;
  FROM SalesLT.SalesOrderDetail
  WHERE OrderQty >= 20;
 
+##Quantities ordered 20 or more
+SELECT Name 
+FROM SalesLT.Product
+ WHERE ProductID IN
+     (SELECT DISTINCT ProductID
+      FROM SalesLT.SalesOrderDetail
+      WHERE OrderQty >= 20);
+
+##Quantities ordered 20 or more  (complex query)  same result as previous
+ SELECT DISTINCT Name
+ FROM SalesLT.Product AS p
+ JOIN SalesLT.SalesOrderDetail AS o
+     ON p.ProductID = o.ProductID
+ WHERE OrderQty >= 20;
+
