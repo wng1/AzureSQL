@@ -128,3 +128,33 @@ FROM Production.Product AS p
 JOIN Production.ProductCategory AS c
 ON p.ProductCategoryID = c.ProductcategoryID
 ORDER BY Category, RankByPrice;
+
+
+##Openrowset by external, files and excels
+SELECT * 
+FROM OPENROWSET(
+    'SQLNCLI', 
+    'Server=RemoteServerName;Trusted_Connection=Yes;', 
+    'SELECT * FROM DatabaseName.SchemaName.TableName'
+);
+
+SELECT * 
+FROM OPENROWSET(
+    BULK 'C:\Data\example.csv', 
+    FORMATFILE = 'C:\Data\example.fmt'
+);
+
+SELECT * 
+FROM OPENROWSET(
+    'Microsoft.ACE.OLEDB.12.0', 
+    'Excel 12.0;Database=C:\Data\example.xlsx;', 
+    'SELECT * FROM [Sheet1$]'
+);
+
+
+SELECT * 
+FROM OPENROWSET(
+    'Microsoft.Jet.OLEDB.4.0', 
+    'Data Source=C:\Data\example.mdb;', 
+    'SELECT * FROM TableName'
+);
