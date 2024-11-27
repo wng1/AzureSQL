@@ -114,3 +114,10 @@ FROM Sales.CustomerAddress;
 SELECT SalesOrderID, Status,
 CHOOSE(Status, 'Ordered', 'Shipped', 'Delivered') AS OrderStatus
 FROM Sales.SalesOrderHeader;
+
+##Select Top 100 product with their ID, Name and ListPrice with an extra column highlight their ranking by highest to lowest
+SELECT TOP ProductID, Name, ListPrice,
+RANK() OVER(ORDER BY ListPrice DESC) AS RankByPrice
+FROM Production.Product AS p
+ORDER BY RankByPrice;
+
