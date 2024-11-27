@@ -121,3 +121,10 @@ RANK() OVER(ORDER BY ListPrice DESC) AS RankByPrice
 FROM Production.Product AS p
 ORDER BY RankByPrice;
 
+## Rank products in each category 
+SELECT c.Name AS Category, p.Name AS Product, ListPrice,
+RANK() OVER(PARTITION BY c.Name ORDER BY ListPrice DESC) AS RankByPrice
+FROM Production.Product AS p
+JOIN Production.ProductCategory AS c
+ON p.ProductCategoryID = c.ProductcategoryID
+ORDER BY Category, RankByPrice;
