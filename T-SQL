@@ -109,3 +109,8 @@ FROM SalesLT.Product
 SELECT AddressType,
       IIF(AddressType = 'Main Office', 'Billing', 'Mailing') AS UseAddressFor
 FROM Sales.CustomerAddress;
+
+##Extra column to produce a OrderStatus based on Status
+SELECT SalesOrderID, Status,
+CHOOSE(Status, 'Ordered', 'Shipped', 'Delivered') AS OrderStatus
+FROM Sales.SalesOrderHeader;
