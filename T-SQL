@@ -158,3 +158,9 @@ FROM OPENROWSET(
     'Data Source=C:\Data\example.mdb;', 
     'SELECT * FROM TableName'
 );
+
+###Show Column Headers
+SELECT * FROM Sales.Promotion
+WHERE 1 = 0;
+
+
