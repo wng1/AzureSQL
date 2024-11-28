@@ -159,7 +159,7 @@ FROM OPENROWSET(
     'SELECT * FROM TableName'
 );
 
-###Show Column Headers
+###Show Column Headers ##Review 
 SELECT * FROM Sales.Promotion
 WHERE 1 = 0;
 
